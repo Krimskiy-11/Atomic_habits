@@ -1,8 +1,10 @@
+from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 from habits.models import Habit
 from habits.paginators import CustomPagination
 from habits.serializers import HabitSerializer
 from users.permissions import IsOwner
+from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 
 
 class HabitViewSet(ModelViewSet):
@@ -20,3 +22,9 @@ class HabitViewSet(ModelViewSet):
         if self.action in ["update", "retrieve", "destroy"]:
             self.permission_classes = (IsOwner,)
         return super().get_permissions()
+
+
+class PublishedHabitListAPIView(ListAPIView):
+    queryset = Habit.objects.filter(is_published=True)
+    serializer_class = HabitSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
