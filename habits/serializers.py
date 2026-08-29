@@ -35,10 +35,12 @@ class HabitSerializer(ModelSerializer):
                 'time_to_action': ["Время выполнения больше 120 секунд"]
             })
 
-        if connection_habit and not is_pleasant:
-            raise ValidationError({
-                'connection_habit': ["Связанные привычки могут быть только с признаком приятной привычки."]
-            })
+        if connection_habit:
+            connected_habit = Habit.objects.get(pk=connection_habit)
+            if not connected_habit.is_pleasant:
+                raise ValidationError({
+                    'connection_habit': ["Связанная привычка должна быть приятной."]
+                })
 
         if is_pleasant and (connection_habit or reward):
             raise ValidationError({
