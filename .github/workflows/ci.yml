@@ -78,7 +78,9 @@ jobs:
           poetry config virtualenvs.in-project false
 
       - name: Install dependencies
-        run: poetry install --no-root
+        run: |
+          poetry env use python3
+          poetry install --no-root
 
       - name: Run migrations
         run: poetry run python manage.py migrate
