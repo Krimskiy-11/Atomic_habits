@@ -63,6 +63,11 @@ jobs:
         with:
           python-version: '3.14'
 
+      - name: Install Poetry via pipx
+        run: |
+          pipx install poetry
+          pipx ensurepath
+
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
