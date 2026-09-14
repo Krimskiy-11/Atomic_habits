@@ -56,13 +56,19 @@ jobs:
           python-version: '3.14'
 
       - name: Install Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Configure Poetry
+        run: |
+          poetry config virtualenvs.create false
+          poetry config virtualenvs.in-project false
 
       - name: Install dependencies
         run: poetry install --no-root
 
       - name: Run migrations
-        run: python manage.py migrate
+        run: poetry run python manage.py migrate
 
       - name: Run tests
         run: python manage.py test
