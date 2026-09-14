@@ -60,12 +60,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
-
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: '3.14'
+          python-version: '3.14'
 
       - name: Install Poetry
         run: |
@@ -79,8 +74,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry env use python3
+          poetry env use ${{ steps.setup-python.outputs.python-path }}
           poetry install --no-root
+        shell: bash
 
       - name: Run migrations
         run: poetry run python manage.py migrate
