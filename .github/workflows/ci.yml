@@ -50,7 +50,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Find pyproject.toml
+      - name: Debug: Find pyproject.toml location
         run: find . -name "pyproject.toml"
 
       - name: Set up Python
@@ -68,17 +68,15 @@ jobs:
           poetry config virtualenvs.create false
           poetry config virtualenvs.in-project false
 
-      - name: Install dependencies
-        run: poetry install --no-root
-
-      - name: Run migrations
+      - name: Install dependencies & Run tests
+        working-directory: ./Atomic_habits
+        run: |
+          poetry install --no-root
+          poetry run python manage.py migrate
+          poetry run python manage.py test
         env:
           DJANGO_SETTINGS_MODULE: config.settings
           CI: "true"
-        run: poetry run python manage.py migrate
-
-      - name: Run tests
-        run: poetry run python manage.py test
 
   deploy:
     runs-on: ubuntu-latest
