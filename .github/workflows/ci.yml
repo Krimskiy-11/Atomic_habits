@@ -50,6 +50,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
+      - name: Find pyproject.toml
+        run: find . -name "pyproject.toml"
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
