@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_yasg',
     'corsheaders',
-    'django_celery_beat',
+    # 'django_celery_beat',
 
     'habits',
     'users',
@@ -131,11 +131,15 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 # Настройки для Celery
 
-# URL-адрес брокера сообщений
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
-# URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+# # URL-адрес брокера сообщений
+# CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+#
+# # URL-адрес брокера результатов, также Redis
+# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = TIME_ZONE

@@ -610,17 +610,6 @@ trio = ["trio (>=0.30)"]
 wmi = ["wmi (>=1.5.1) ; platform_system == \"Windows\""]
 
 [[package]]
-name = "dotenv-python"
-version = "0.0.1"
-description = "Read .env(-ish) configuration file for python web applications."
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "dotenv-python-0.0.1.zip", hash = "sha256:362e170ca8fd69a70c1aca1fda2ddad0ac270e161e81e59f4039ec11decc14fa"},
-]
-
-[[package]]
 name = "drf-yasg"
 version = "1.21.15"
 description = "Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
@@ -1327,4 +1316,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.14"
-content-hash = "1cfc75857acf65fd2357b55c8c4cfbdc9817aee3443f15c269b36f15a6c53bf0"
+content-hash = "896fd27bdb14ab95db59b9fe4429ef0a5cffff6122a8bcf4e320c402ab95dbac"
