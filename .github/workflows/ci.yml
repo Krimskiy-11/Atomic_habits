@@ -50,9 +50,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Debug: Find pyproject.toml location
-        run: find . -name "pyproject.toml"
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -69,7 +66,6 @@ jobs:
           poetry config virtualenvs.in-project false
 
       - name: Install dependencies & Run tests
-        working-directory: ./Atomic_habits
         run: |
           poetry install --no-root
           poetry run python manage.py migrate
