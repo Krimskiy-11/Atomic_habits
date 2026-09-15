@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import force_authenticate, APIClient
+from rest_framework.test import APIClient
 from datetime import timedelta
 
 from habits.models import Habit
