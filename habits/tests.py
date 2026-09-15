@@ -15,11 +15,11 @@ class HabitTestCase(TestCase):
         )
         self.habit = Habit.objects.create(
             place="Дом",
-            time=timedelta(minutes=2),
+            time=timedelta(hours=12),
             action="Пить больше воды",
             is_pleasant=True,
             period="1",
-            time_to_action="00:01:00",
+            time_to_action=timedelta(minutes=1),
             is_published=True,
             owner= self.user
         )
