@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import force_authenticate, APIClient
+from datetime import timedelta
 
 from habits.models import Habit
 from users.models import User
@@ -14,7 +15,7 @@ class HabitTestCase(TestCase):
         )
         self.habit = Habit.objects.create(
             place="Дом",
-            time="12:00:00",
+            time=timedelta(minutes=2),
             action="Пить больше воды",
             is_pleasant=True,
             period="1",
