@@ -89,12 +89,14 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: config.settings
           CI: "true"
+          SECRET_KEY: "ci-insecure-secret-key"
 
       - name: Run tests
         run: poetry run python manage.py test
         env:
           DJANGO_SETTINGS_MODULE: config.settings
           CI: "true"
+          SECRET_KEY: "ci-insecure-secret-key"
 
   deploy:
     runs-on: ubuntu-latest
