@@ -15,7 +15,7 @@ class HabitTestCase(TestCase):
         )
         self.habit = Habit.objects.create(
             place="Дом",
-            time=timedelta(hours=12),
+            time="12:00:00",
             action="Пить больше воды",
             is_pleasant=True,
             period="1",
