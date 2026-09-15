@@ -21,7 +21,7 @@ class HabitTestCase(TestCase):
             period="1",
             time_to_action=timedelta(minutes=1),
             is_published=True,
-            owner= self.user
+            owner=self.user
         )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
