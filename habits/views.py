@@ -4,7 +4,7 @@ from habits.models import Habit
 from habits.paginators import CustomPagination
 from habits.serializers import HabitSerializer
 from users.permissions import IsOwner
-from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView
 
 
 class HabitViewSet(ModelViewSet):
